@@ -15,11 +15,18 @@ const App = () => {
 			<form onSubmit={event => handleSubmit(event, tasks, setTasks)}>
 				<input type='text' name='task' />
 			</form>
-			<Tasks tasks={filteredTasks} />
+			<Tasks
+				tasks={filteredTasks}
+				actionDelete={taskId => deleteTask(tasks, setTasks, taskId)}
+			/>
 
 			<Filters filterActive={filterActive} setFilterActive={setFilterActive} />
 		</>
 	);
+};
+const deleteTask = (tasks, setTasks, taskId) => {
+	const tasksUpdated = tasks.filter(task => task.id !== taskId);
+	setTasks(tasksUpdated);
 };
 const filterActiveTasks = tasks => {
 	return tasks.filter(task => !task.completed);
