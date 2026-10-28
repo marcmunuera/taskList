@@ -8,7 +8,6 @@ import Tasks from './components/tasks/Tasks';
 const App = () => {
 	const [tasks, setTasks] = useState([]);
 	const [filterActive, setFilterActive] = useState(FILTERS.ALL);
-	console.log(filterActive);
 
 	const filteredTasks = filterTasks(filterActive, tasks);
 	return (
