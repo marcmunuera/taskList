@@ -1,10 +1,14 @@
-const Tasks = ({ tasks, actionDelete }) => {
+const Tasks = ({ tasks, actionDelete, actionComplete }) => {
 	return (
 		<>
 			{tasks.map(task => (
 				<div key={task.id}>
 					<p>{task.task}</p>
-					<input type='checkbox' />
+					<input
+						type='checkbox'
+						checked={task.completed}
+						onChange={() => actionComplete(task.id)}
+					/>
 					<span
 						onClick={() => {
 							actionDelete(task.id);
@@ -16,8 +20,5 @@ const Tasks = ({ tasks, actionDelete }) => {
 			))}
 		</>
 	);
-};
-const actionDelete = () => {
-	console.log('estas eliminando');
 };
 export default Tasks;
